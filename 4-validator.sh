@@ -1,6 +1,6 @@
 exec solana-validator \
-    --identity solana-keys/validator-keypair.json \
-    --vote-account solana-keys/vote-account-keypair.json \
+    --identity /solana-keys/validator-keypair.json \
+    --vote-account /solana-keys/vote-account-keypair.json \
     --known-validator 5D1fNXzvv5NjV1ysLjirC4WY92RNsVH18vjmcszZd8on \
     --known-validator 7XSY3MrYnK8vq693Rju17bbPkCN3Z7KvvfvJx4kdrsSY \
     --known-validator Ft5fbkqNa76vnsjYNwjDZUXoTWpP7VYm3mtsaQckQADN \
