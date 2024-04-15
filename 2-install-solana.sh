@@ -1,24 +1,17 @@
-
-
 #!/bin/bash
 
-# Path to install Solana
-INSTALL_PATH="$HOME/.local/share/solana/install/active_release/bin"
+# Define the installation path for Solana tools
+solana_path="/root/.local/share/solana/install/active_release/bin"
 
-# Download and install Solana
-echo "Downloading and installing Solana..."
-sh -c "$(curl -sSfL https://release.solana.com/stable/install)"
-# Update .profile to include Solana's path (check if already present to avoid duplicates)
-if ! grep -q "export PATH=\"$INSTALL_PATH:\$PATH\"" ~/.profile; then
-    echo "export PATH=\"$INSTALL_PATH:\$PATH\"" >> ~/.profile
-    echo "PATH updated in .profile. Please restart your terminal or source ~/.profile"
+# Step 1: Update PATH in current session and permanently
+export PATH="$solana_path:$PATH"
+echo "export PATH=\"$solana_path:\$PATH\"" >> ~/.profile
+
+# Verify Solana installation and version
+if ! command -v solana-keygen &>/dev/null; then
+    echo "Solana tools are not installed or not found in PATH. Attempting to install Solana..."
+    # Assume this is the command to install Solana
+    sh -c "$(curl -sSfL https://release.solana.com/stable/install)"
 else
-    echo "PATH already updated in .profile."
+    echo "Solana installation verified. Proceeding with key generation..."
 fi
-
-# Source the profile to update the PATH in the current session
-export PATH="$INSTALL_PATH:$PATH"
-echo "PATH updated for the current session."
-
-# Solana installation complete message
-echo "Solana installation complete."
