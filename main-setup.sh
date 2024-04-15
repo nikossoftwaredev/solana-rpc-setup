@@ -5,16 +5,13 @@ set -e
 
 echo "Starting Solana Validator Setup..."
 
-# Install Rust
-echo "Installing Rust..."
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+echo "Install Rust"
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+source "$HOME/.cargo/env"  # Ensure Rust tools are in the PATH
 
-# Ensure the Rust tools are in the PATH
-source $HOME/.cargo/env
-
-# Install required packages
 echo "Installing system dependencies..."
-sudo apt-get update
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys ED444FF07D8D0BF6
+sudo apt-get update --fix-missing
 sudo apt-get install -y \
     build-essential \
     pkg-config \
@@ -23,21 +20,19 @@ sudo apt-get install -y \
     libclang-dev \
     protobuf-compiler
 
-# Extract the solana source archive
 echo "Extracting Solana source archive..."
 tar -xzf solana-1.17.31.tar.gz
-
-# Navigate to the extracted directory
 cd solana-1.17.31
 
-# Run the included script to build and install Solana
 echo "Building and installing Solana..."
 ./scripts/cargo-install-all.sh .
 
-# Assuming that the install script places binaries in the 'bin' directory relative to the current directory,
-# Add the bin directory to the PATH
+echo "Adjusting PATH..."
 export PATH="$PWD/bin:$PATH"
 echo "export PATH=\"$PWD/bin:\$PATH\"" >> ~/.profile
+
+echo "Setup complete! Solana Validator should be operational."
+
 
 # Initialize Solana installation (if required by the script, check if this step is necessary)
 echo "Initializing Solana..."
