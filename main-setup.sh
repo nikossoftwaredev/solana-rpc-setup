@@ -5,20 +5,48 @@ set -e
 
 echo "Starting Solana Validator Setup..."
 
-echo "Installing Solana..."
-sh -c "$(curl -sSfL https://release.solana.com/stable/install)"
+# Install Rust
+echo "Installing Rust..."
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 
-# Now, immediately export and use the new PATH
-export PATH="/root/.local/share/solana/install/active_release/bin:$PATH"
-echo "export PATH=\"/root/.local/share/solana/install/active_release/bin:\$PATH\"" >> ~/.profile
+# Ensure the Rust tools are in the PATH
+source $HOME/.cargo/env
 
-# Verify installation and proceed
-if command -v solana-keygen >/dev/null 2>&1; then
-    echo "Solana installation verified. Proceeding with key generation..."
-else
-    echo "Solana installation failed or solana-keygen not found in PATH."
-    exit 1
-fi
+# Install required packages
+echo "Installing system dependencies..."
+sudo apt-get update
+sudo apt-get install -y \
+    build-essential \
+    pkg-config \
+    libudev-dev \
+    llvm \
+    libclang-dev \
+    protobuf-compiler
+
+# Extract the solana source archive
+echo "Extracting Solana source archive..."
+tar -xzf solana-1.17.31.tar.gz
+
+# Navigate to the extracted directory
+cd solana-1.17.31
+
+# Run the included script to build and install Solana
+echo "Building and installing Solana..."
+./scripts/cargo-install-all.sh .
+
+# Assuming that the install script places binaries in the 'bin' directory relative to the current directory,
+# Add the bin directory to the PATH
+export PATH="$PWD/bin:$PATH"
+echo "export PATH=\"$PWD/bin:\$PATH\"" >> ~/.profile
+
+# Initialize Solana installation (if required by the script, check if this step is necessary)
+echo "Initializing Solana..."
+solana-install init
+
+echo "Setup complete! Solana Validator should be operational."
+
+
+
 
 echo "Step 1: System Tuning..."
 ./1-system-tuning.sh
