@@ -3,4 +3,4 @@ Automating this tutorial
 
 1. git clone https://github.com/nikossoftwaredev/solana-rpc-setup.git
 2. find solana-rpc-setup -type f -name "*.sh" -exec chmod +x {} +
-
+3. sudo ./main-setup.sh
