@@ -14,7 +14,7 @@ exec solana-validator \
     --snapshot-interval-slots 1000 \
     --rpc-port 8899 \
     --rpc-bind-address 127.0.0.1 \
-    --dynamic-port-range 8000-8010 \
+    --dynamic-port-range 8000-8014 \
     --wal-recovery-mode skip_any_corrupted_record \
     --init-complete-file /var/nikossoftwaredev/data/init-completed \
     --snapshot-archive-format lz4 \
