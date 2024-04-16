@@ -2,6 +2,8 @@
 
 # This script configures system parameters for Solana Validator
 
+ulimit -n 65536
+
 # Configuring system parameters
 sudo bash -c 'cat > /etc/sysctl.d/21-solana-validator.conf <<EOF
 # Increase UDP buffer sizes
@@ -43,6 +45,5 @@ echo "Please log out and log in again for the changes to take effect."
 
 sudo iptables -A INPUT -p tcp --dport 8899 -j ACCEPT
 sudo iptables -A INPUT -p tcp --dport 8900 -j ACCEPT
-sudo iptables-save > /etc/iptables/rules.v4   # Save the rules
 
 timedatectl
