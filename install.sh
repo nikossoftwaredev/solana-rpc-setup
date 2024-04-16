@@ -31,7 +31,7 @@ Description=Solana Validator Service
 After=network.target
 
 [Service]
-ExecStart=/root/solana-rpc-setup
+ExecStart=/root/solana-rpc-setup/validator.sh
 User=root
 Restart=always
 
