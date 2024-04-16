@@ -13,7 +13,7 @@ exec solana-validator \
     --no-voting \
     --snapshot-interval-slots 1000 \
     --rpc-port 8899 \
-    --rpc-bind-address 127.0.0.1 \
+    --rpc-bind-address 0.0.0.0 \
     --dynamic-port-range 8000-8014 \
     --wal-recovery-mode skip_any_corrupted_record \
     --init-complete-file /var/nikossoftwaredev/data/init-completed \
