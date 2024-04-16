@@ -27,8 +27,8 @@ exec solana-validator \
     --enable-rpc-transaction-history \
     --enable-cpi-and-log-storage \
     --init-complete-file /var/nikossoftwaredev/data/init-completed \
-    --snapshot-compression none \
+    --snapshot-archive-format lz4 \  # This line was added
     --require-tower \
     --no-wait-for-vote-to-start-leader \
     --no-poh-speed-test \
-    --limit-ledger-size 50000000     
+    --limit-ledger-size 50000000
