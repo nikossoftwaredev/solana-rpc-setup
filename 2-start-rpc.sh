@@ -4,17 +4,17 @@
 echo "Creating Solana Validator service file..."
 cat <<EOF | sudo tee /etc/systemd/system/solana-validator.service > /dev/null
 [Unit]
-Description=Solana Validator
+Description=Solana Validator Service
 After=network.target
 
 [Service]
-User=root
 ExecStart=/home/nikossoftwaredev/solana-rpc-setup/validator.sh
-Restart=on-failure
+User=root
+Restart=always
 LimitNOFILE=1000000
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=multi-user.targett
 EOF
 
 # Reload systemd to recognize new service
