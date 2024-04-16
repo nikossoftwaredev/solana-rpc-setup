@@ -2,6 +2,9 @@
 
 # Exit script on any error
 set -e
+set -o errexit
+set -o nounset
+set -o pipefail
 
 echo "Starting Solana Validator Setup..."
 

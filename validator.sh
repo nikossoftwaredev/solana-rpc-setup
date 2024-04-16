@@ -1,4 +1,8 @@
 #!/bin/bash
+
+export RUST_LOG=error
+export RUST_BACKTRACE=full
+
 exec solana-validator \
     --identity /home/solana/solana-rpc-setup/solana-keys/validator-keypair.json \
     --ledger /var/solana/data/ledger \
@@ -18,7 +22,6 @@ exec solana-validator \
     --rpc-port 8899 \
     --rpc-bind-address 0.0.0.0 \
     --dynamic-port-range 8000-8020 \
-
     --no-port-check \
     --wal-recovery-mode skip_any_corrupted_record \
     --enable-rpc-transaction-history \

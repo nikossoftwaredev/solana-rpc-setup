@@ -29,6 +29,4 @@ sudo systemctl enable solana-validator.service
 echo "Starting Solana Validator service..."
 sudo systemctl start solana-validator.service
 
-# Display the status
-echo "Displaying Solana Validator service status..."
-sudo systemctl status solana-validator.service
+
