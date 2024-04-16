@@ -5,10 +5,15 @@ set -e
 
 echo "Starting Solana Validator Setup..."
 
-# Add a new user named "solana" with sudo privileges
-echo "Creating Solana user..."
-sudo useradd -m -s /bin/bash solana
-sudo usermod -aG sudo solana
+# Check if the solana user exists
+if ! id -u solana &>/dev/null; then
+    echo "Creating Solana user..."
+    sudo useradd -m -s /bin/bash solana
+    sudo usermod -aG sudo solana
+else
+    echo "Solana user already exists."
+fi
+
 
 echo "Installing Solana..."
 sh -c "$(curl -sSfL https://release.solana.com/stable/install)"
