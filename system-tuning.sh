@@ -22,16 +22,6 @@ EOF'
 # Applying the sysctl changes
 sudo sysctl -p /etc/sysctl.d/21-solana-validator.conf
 
-# Adjusting systemd service file or /etc/systemd/system.conf
-# Adjusting systemd service file if exists
-if [ -f "/etc/systemd/system/solana-validator.service" ]; then
-    sudo bash -c 'echo "LimitNOFILE=1000000" >> /etc/systemd/system/solana-validator.service'
-    sudo systemctl daemon-reload
-fi
-
-# Adjusting /etc/systemd/system.conf
-sudo bash -c 'echo "DefaultLimitNOFILE=1000000" >> /etc/systemd/system.conf'
-
 # Creating a file to set process file descriptor count limit
 sudo bash -c 'cat >/etc/security/limits.d/90-solana-nofiles.conf <<EOF
 # Increase process file descriptor count limit

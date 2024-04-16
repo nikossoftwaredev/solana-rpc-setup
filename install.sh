@@ -16,7 +16,6 @@ echo 'export PATH="$PATH:/root/.local/share/solana/install/releases/stable-d0ed8
 
 source ~/.bashrc
 
-
 echo "Step 1: System Tuning..."
 ./system-tuning.sh
 echo "System tuning complete."
