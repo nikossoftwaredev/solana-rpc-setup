@@ -12,6 +12,7 @@ ExecStart=/home/nikossoftwaredev/solana-rpc-setup/validator.sh
 User=solana
 Restart=always
 LimitNOFILE=1000000
+MemoryLimit=2.5G
 
 [Install]
 WantedBy=multi-user.target
