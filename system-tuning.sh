@@ -51,9 +51,9 @@ for port in $udp_ports; do
 done
 
 
-if [ ! -d "/var/solana" ]; then
-    mkdir -p /var/solana && mkdir /var/solana/data && mkdir /var/solana/accounts && mkdir /var/solana/ledger
-    chmod -R 777 /var/solana
+if [ ! -d "/var/root" ]; then
+    mkdir -p /var/root && mkdir /var/root/data && mkdir /var/root/accounts && mkdir /var/root/ledger
+    chmod -R 777 /var/root
 fi
 
 

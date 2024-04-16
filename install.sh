@@ -20,7 +20,23 @@ echo "Step 1: System Tuning..."
 ./1-system-tuning.sh
 echo "System tuning complete."
 
-echo "Step 2: Starting Rpc..."
-./2-start-rpc.sh
+# Create systemd service file for Solana Validator
+echo "Creating Solana Validator service file..."
+cat <<EOF | sudo tee /etc/systemd/system/solana-validator.service > /dev/null
+[Unit]
+Description=Solana Validator Service
+After=network.target
+
+[Service]
+ExecStart=/home/solana/solana-rpc-setup/validator.sh
+User=root
+Restart=always
+LimitNOFILE=1000000
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+
 
 echo "Setup complete! Solana Validator should be operational."
