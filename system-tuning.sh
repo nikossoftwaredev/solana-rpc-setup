@@ -30,20 +30,20 @@ EOF'
 
 
 # Flush existing rules
-sudo iptables -F
-# Define the list of UDP ports to be opened
-udp_ports="8899 8900 8000 8001 8003 8004 8005 8006 8007 8008 8009 8010 8011 8012 8013 8014 8015 8016 8017 8018 8019 8020"
+# sudo iptables -F
+# # Define the list of UDP ports to be opened
+# udp_ports="8899 8900 8000 8001 8003 8004 8005 8006 8007 8008 8009 8010 8011 8012 8013 8014 8015 8016 8017 8018 8019 8020"
 
-# Allow incoming UDP traffic on the specified ports
-for port in $udp_ports; do
-    sudo iptables -A INPUT -p udp --dport $port -j ACCEPT
-    sudo iptables -A INPUT -p tcp --dport $port -j ACCEPT
-done
+# # Allow incoming UDP traffic on the specified ports
+# for port in $udp_ports; do
+#     sudo iptables -A INPUT -p udp --dport $port -j ACCEPT
+#     sudo iptables -A INPUT -p tcp --dport $port -j ACCEPT
+# done
 
 
-if [ ! -d "/var/root" ]; then
-    mkdir -p /var/root && mkdir /var/root/data && mkdir /var/root/accounts && mkdir /var/root/ledger
-    chmod -R 777 /var/root
-fi
+# if [ ! -d "/var/root" ]; then
+#     mkdir -p /var/root && mkdir /var/root/data && mkdir /var/root/accounts && mkdir /var/root/ledger
+#     chmod -R 777 /var/root
+# fi
 
 
