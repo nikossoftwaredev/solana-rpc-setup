@@ -20,6 +20,6 @@ exec solana-validator \
     --snapshot-archive-format lz4 \
     --require-tower \
     --no-wait-for-vote-to-start-leader \
-    --limit-ledger-size 10000000 \
+    --limit-ledger-size 50000000 \
     --accounts /var/nikossoftwaredev/accounts \
     --log -
