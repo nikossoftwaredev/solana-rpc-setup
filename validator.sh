@@ -5,7 +5,7 @@ export RUST_BACKTRACE=full
 
 exec solana-validator \
     --identity /home/nikossoftwaredev/solana-rpc-setup/solana-keys/validator-keypair.json \
-    --ledger /var/nikossoftwaredevdata/data/ledger \
+    --ledger /var/nikossoftwaredev/data/ledger \
     --trusted-validator 7Np41oeYqPefeNQEHSv1UDhYrehxin3NStELsSKCT4K2 \
     --trusted-validator GdnSyH3YtwcxFvQrVVJMm1JhTS4QVX7MFsX56uJLUfiZ \
     --trusted-validator DE1bawNcRJB9rVm3buyMVfr8mBEoyyu73NBovf2oXJsJ \
