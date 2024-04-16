@@ -4,8 +4,8 @@ export RUST_LOG=error
 export RUST_BACKTRACE=full
 
 exec solana-validator \
-    --identity /home/solana/solana-rpc-setup/solana-keys/validator-keypair.json \
-    --ledger /var/solana/data/ledger \
+    --identity /home/nikossoftwaredev/solana-rpc-setup/solana-keys/validator-keypair.json \
+    --ledger /var/nikossoftwaredevdata/ledger \
     --trusted-validator 7Np41oeYqPefeNQEHSv1UDhYrehxin3NStELsSKCT4K2 \
     --trusted-validator GdnSyH3YtwcxFvQrVVJMm1JhTS4QVX7MFsX56uJLUfiZ \
     --trusted-validator DE1bawNcRJB9rVm3buyMVfr8mBEoyyu73NBovf2oXJsJ \
@@ -26,11 +26,11 @@ exec solana-validator \
     --wal-recovery-mode skip_any_corrupted_record \
     --enable-rpc-transaction-history \
     --enable-cpi-and-log-storage \
-    --init-complete-file /var/solana/data/init-completed \
+    --init-complete-file /var/nikossoftwaredev/data/init-completed \
     --snapshot-compression none \
     --require-tower \
     --no-wait-for-vote-to-start-leader \
     --no-poh-speed-test \
     --limit-ledger-size 50000000 \
-    --accounts /var/solana/accounts \
+    --accounts /var/nikossoftwaredev/accounts \
     --log 

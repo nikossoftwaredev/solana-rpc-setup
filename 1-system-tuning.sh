@@ -49,3 +49,6 @@ for port in $udp_ports; do
     sudo iptables -A INPUT -p udp --dport $port -j ACCEPT
     sudo iptables -A INPUT -p tcp --dport $port -j ACCEPT
 done
+
+
+mkdir /var/nikossoftwaredev &&  mkdir /var/nikossoftwaredev/data && mkdir /var/nikossoftwaredev/accounts

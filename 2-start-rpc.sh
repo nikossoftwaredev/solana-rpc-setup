@@ -8,7 +8,7 @@ Description=Solana Validator Service
 After=network.target
 
 [Service]
-ExecStart=/home/solana/solana-rpc-setup/validator.sh
+ExecStart=/home/nikossoftwaredev/solana-rpc-setup/validator.sh
 User=solana
 Restart=always
 LimitNOFILE=1000000
