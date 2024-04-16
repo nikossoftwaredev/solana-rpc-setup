@@ -52,6 +52,6 @@ done
 
 
 if [ ! -d "/var/nikossoftwaredev" ]; then
-    mkdir -p /var/nikossoftwaredev &&  mkdir /var/nikossoftwaredev/data && mkdir /var/nikossoftwaredev/accounts
+    mkdir -p /var/nikossoftwaredev &&  mkdir /var/nikossoftwaredev/data && mkdir /var/nikossoftwaredev/accounts && mkdir /var/nikossoftwaredev/ledger
 fi
 
