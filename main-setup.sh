@@ -5,13 +5,21 @@ set -e
 
 echo "Starting Solana Validator Setup..."
 
+# Add a new user named "solana" with sudo privileges
+echo "Creating Solana user..."
+sudo useradd -m -s /bin/bash solana
+sudo usermod -aG sudo solana
+
+# Switch to the solana user
+echo "Switching to solana user..."
+sudo -u solana bash << EOF
+
 echo "Installing Solana..."
 sh -c "$(curl -sSfL https://release.solana.com/stable/install)"
 
 # Now, immediately export and use the new PATH
-echo 'export PATH="$PATH:root/.local/share/solana/install/active_release/bin"' >> ~/.bashrc
+echo 'export PATH="$PATH:/root/.local/share/solana/install/active_release/bin"' >> ~/.bashrc
 source ~/.bashrc
-
 
 echo "Step 1: System Tuning..."
 ./1-system-tuning.sh
@@ -21,3 +29,5 @@ echo "Step 2: Starting Rpc..."
 ./2-start-rpc.sh
 
 echo "Setup complete! Solana Validator should be operational."
+
+EOF
