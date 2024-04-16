@@ -14,7 +14,7 @@ Restart=always
 LimitNOFILE=1000000
 
 [Install]
-WantedBy=multi-user.targett
+WantedBy=multi-user.target
 EOF
 
 # Reload systemd to recognize new service
