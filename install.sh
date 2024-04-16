@@ -18,7 +18,7 @@ source ~/.bashrc
 
 
 echo "Step 1: System Tuning..."
-./1-system-tuning.sh
+./system-tuning.sh
 echo "System tuning complete."
 
 # Create systemd service file for Solana Validator
