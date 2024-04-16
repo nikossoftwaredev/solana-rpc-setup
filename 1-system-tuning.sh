@@ -41,9 +41,22 @@ EOF'
 # Prompting the user to log out and log in again for changes to take effect
 echo "Please log out and log in again for the changes to take effect."
 
-# Checking system clock accuracy
 
-sudo iptables -A INPUT -p tcp --dport 8899 -j ACCEPT
-sudo iptables -A INPUT -p tcp --dport 8900 -j ACCEPT
+# Flush existing rules
+iptables -F
+
+# Allow incoming TCP traffic on ports 8899, 8900, and 8000 through 8020
+for port in 8899 8900 {8000..8020}; do
+    iptables -A INPUT -p tcp --dport $port -j ACCEPT
+done
+
+# Allow incoming UDP traffic on ports 8899, 8900, and 8000 through 8020
+for port in 8899 8900 {8000..8020}; do
+    iptables -A INPUT -p udp --dport $port -j ACCEPT
+done
+
+# Save the iptables rules
+iptables-save > /etc/iptables/rules.v4
+
 
 timedatectl
