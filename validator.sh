@@ -27,7 +27,7 @@ exec solana-validator \
     --enable-rpc-transaction-history \
     --enable-cpi-and-log-storage \
     --init-complete-file /var/nikossoftwaredev/data/init-completed \
-    --snapshot-archive-format lz4 \  # This line was added
+    --snapshot-archive-format lz4 \
     --require-tower \
     --no-wait-for-vote-to-start-leader \
     --no-poh-speed-test \
