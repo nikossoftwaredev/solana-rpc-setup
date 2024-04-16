@@ -7,6 +7,11 @@ set -o pipefail
 
 echo "Starting Solana Validator Setup..."
 
+# Increase file descriptor limits
+echo "Increasing file descriptor limits..."
+echo "* soft nofile 1000000" | sudo tee -a /etc/security/limits.conf
+echo "* hard nofile 1000000" | sudo tee -a /etc/security/limits.conf
+
 echo "Installing Solana..."
 sh -c "$(curl -sSfL https://release.solana.com/stable/install)"
 
@@ -31,12 +36,9 @@ After=network.target
 ExecStart=/home/solana/solana-rpc-setup/validator.sh
 User=root
 Restart=always
-LimitNOFILE=1000000
 
 [Install]
 WantedBy=multi-user.target
 EOF
-
-
 
 echo "Setup complete! Solana Validator should be operational."
