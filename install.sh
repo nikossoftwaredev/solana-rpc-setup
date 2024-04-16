@@ -1,5 +1,7 @@
 #!/bin/bash
 
+ulimit -n 65536
+
 # Exit script on any error
 set -e
 set -o errexit
@@ -7,10 +9,6 @@ set -o pipefail
 
 echo "Starting Solana Validator Setup..."
 
-# Increase file descriptor limits
-echo "Increasing file descriptor limits..."
-echo "* soft nofile 1000000" | sudo tee -a /etc/security/limits.conf
-echo "* hard nofile 1000000" | sudo tee -a /etc/security/limits.conf
 
 echo "Installing Solana..."
 sh -c "$(curl -sSfL https://release.solana.com/stable/install)"

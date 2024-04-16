@@ -2,7 +2,6 @@
 
 # This script configures system parameters for Solana Validator
 
-ulimit -n 65536
 
 # Configuring system parameters
 sudo bash -c 'cat > /etc/sysctl.d/21-solana-validator.conf <<EOF
