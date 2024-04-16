@@ -51,4 +51,4 @@ for port in $udp_ports; do
 done
 
 
-mkdir /var/nikossoftwaredev &&  mkdir /var/nikossoftwaredev/data && mkdir /var/nikossoftwaredev/accounts
+mkdir -p /var/nikossoftwaredev &&  mkdir /var/nikossoftwaredev/data && mkdir /var/nikossoftwaredev/accounts
