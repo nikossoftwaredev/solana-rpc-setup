@@ -32,6 +32,7 @@ After=network.target
 
 [Service]
 ExecStart=/root/solana-rpc-setup/validator.sh
+Environment="PATH=/usr/local/bin:/usr/bin:/bin"
 User=root
 Restart=always
 
