@@ -40,4 +40,9 @@ EOF'
 echo "Please log out and log in again for the changes to take effect."
 
 # Checking system clock accuracy
+
+sudo iptables -A INPUT -p tcp --dport 8899 -j ACCEPT
+sudo iptables -A INPUT -p tcp --dport 8900 -j ACCEPT
+sudo iptables-save > /etc/iptables/rules.v4   # Save the rules
+
 timedatectl
