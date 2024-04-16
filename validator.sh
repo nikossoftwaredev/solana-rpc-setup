@@ -1,6 +1,6 @@
 #!/bin/bash
 exec solana-validator \
-    --identity /solana-keys/validator-keypair.json \
+    --identity /home/root/solana-rpc-setup/solana-keys/validator-keypair.json \
     --known-validator 5D1fNXzvv5NjV1ysLjirC4WY92RNsVH18vjmcszZd8on \
     --known-validator dDzy5SR3AXdYWVqbDEkVFdvSPCtS9ihF5kJkHCtXoFs \
     --known-validator eoKpUABi59aT4rR9HGS3LcMecfut9x7zJyodWWP43YQ \
