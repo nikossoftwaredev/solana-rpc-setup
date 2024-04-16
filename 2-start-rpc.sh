@@ -1,25 +1,34 @@
 #!/bin/bash
-exec solana-validator \
-    --identity solana-keys/validator-keypair.json \
-    --known-validator 5D1fNXzvv5NjV1ysLjirC4WY92RNsVH18vjmcszZd8on \
-    --known-validator dDzy5SR3AXdYWVqbDEkVFdvSPCtS9ihF5kJkHCtXoFs \
-    --known-validator eoKpUABi59aT4rR9HGS3LcMecfut9x7zJyodWWP43YQ \
-    --known-validator 7XSY3MrYnK8vq693Rju17bbPkCN3Z7KvvfvJx4kdrsSY \
-    --known-validator Ft5fbkqNa76vnsjYNwjDZUXoTWpP7VYm3mtsaQckQADN \
-    --known-validator 9QxCLckBiJc783jnMvXZubK4wH86Eqqvashtrwvcsgkv \
-    --only-known-rpc \
-    --full-rpc-api \
-    --no-voting \
-    --ledger /mnt/ledger \
-    --accounts /mnt/accounts \
-    --log /home/sol/solana-rpc.log \
-    --rpc-port 8899 \
-    --rpc-bind-address 0.0.0.0 \
-    --private-rpc \
-    --dynamic-port-range 8000-8020 \
-    --entrypoint entrypoint.testnet.solana.com:8001 \
-    --entrypoint entrypoint2.testnet.solana.com:8001 \
-    --entrypoint entrypoint3.testnet.solana.com:8001 \
-    --expected-genesis-hash 4uhcVJyU9pJkvQyS88uRDiswHXSCkY3zQawwpjk2NsNY \
-    --wal-recovery-mode skip_any_corrupted_record \
-    --limit-ledger-size
+
+# Create systemd service file for Solana Validator
+echo "Creating Solana Validator service file..."
+cat <<EOF | sudo tee /etc/systemd/system/solana-validator.service > /dev/null
+[Unit]
+Description=Solana Validator
+After=network.target
+
+[Service]
+User=sol
+ExecStart=/solana-rpc-setup/validator.sh
+Restart=on-failure
+LimitNOFILE=1000000
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+# Reload systemd to recognize new service
+echo "Reloading systemd..."
+sudo systemctl daemon-reload
+
+# Enable Solana Validator service to start at boot
+echo "Enabling Solana Validator service..."
+sudo systemctl enable solana-validator.service
+
+# Start the service
+echo "Starting Solana Validator service..."
+sudo systemctl start solana-validator.service
+
+# Display the status
+echo "Displaying Solana Validator service status..."
+sudo systemctl status solana-validator.service
