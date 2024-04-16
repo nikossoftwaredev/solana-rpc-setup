@@ -32,5 +32,5 @@ exec solana-validator \
     --no-wait-for-vote-to-start-leader \
     --no-poh-speed-test \
     --limit-ledger-size 50000000 \
-    --acounts /var/nikossoftwaredev/accounts \
+    --accounts /var/nikossoftwaredev/accounts \
     -- log - 
