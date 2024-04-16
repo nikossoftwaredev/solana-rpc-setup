@@ -12,7 +12,7 @@ echo "Installing Solana..."
 sh -c "$(curl -sSfL https://release.solana.com/stable/install)"
 
 # Now, immediately export and use the new PATH
-echo 'export PATH="$PATH:nikossoftwaredev/.local/share/solana/install/active_release/bin"' >> ~/.bashrc
+echo 'export PATH="$PATH:solana/.local/share/solana/install/active_release/bin"' >> ~/.bashrc
 source ~/.bashrc
 
 

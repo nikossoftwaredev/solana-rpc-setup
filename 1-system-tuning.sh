@@ -51,9 +51,9 @@ for port in $udp_ports; do
 done
 
 
-if [ ! -d "/var/nikossoftwaredev" ]; then
-    mkdir -p /var/nikossoftwaredev && mkdir /var/nikossoftwaredev/data && mkdir /var/nikossoftwaredev/accounts && mkdir /var/nikossoftwaredev/ledger
-    chmod -R 777 /var/nikossoftwaredev
+if [ ! -d "/var/solana" ]; then
+    mkdir -p /var/solana && mkdir /var/solana/data && mkdir /var/solana/accounts && mkdir /var/solana/ledger
+    chmod -R 777 /var/solana
 fi
 
 
