@@ -12,14 +12,6 @@ sh -c "$(curl -sSfL https://release.solana.com/stable/install)"
 export PATH="/root/.local/share/solana/install/active_release/bin:$PATH"
 echo "export PATH=\"/root/.local/share/solana/install/active_release/bin:\$PATH\"" >> ~/.profile
 
-# Verify installation and proceed
-if command -v solana-keygen >/dev/null 2>&1; then
-    echo "Solana installation verified. Proceeding with key generation..."
-else
-    echo "Solana installation failed or solana-keygen not found in PATH."
-    exit 1
-fi
-
 echo "Step 1: System Tuning..."
 ./1-system-tuning.sh
 echo "System tuning complete."

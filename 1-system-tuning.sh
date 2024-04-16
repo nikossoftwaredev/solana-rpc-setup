@@ -38,25 +38,20 @@ sudo bash -c 'cat >/etc/security/limits.d/90-solana-nofiles.conf <<EOF
 * - nofile 1000000
 EOF'
 
-# Prompting the user to log out and log in again for changes to take effect
-echo "Please log out and log in again for the changes to take effect."
-
 
 # Flush existing rules
 iptables -F
 
-# Allow incoming TCP traffic on ports 8899, 8900, and 8000 through 8020
-for port in 8899 8900 {8000..8020}; do
-    iptables -A INPUT -p tcp --dport $port -j ACCEPT
-done
 
-# Allow incoming UDP traffic on ports 8899, 8900, and 8000 through 8020
-for port in 8899 8900 {8000..8020}; do
+# Define the list of UDP ports to be opened
+udp_ports="8899 8900 8000 8001 8003 8004 8005 8006 8007 8008 8009 8010 8011 8012 8013 8014 8015 8016 8017 8018 8019 8020"
+
+# Allow incoming UDP traffic on the specified ports
+for port in $udp_ports; do
     iptables -A INPUT -p udp --dport $port -j ACCEPT
 done
 
-# Save the iptables rules
-iptables-save > /etc/iptables/rules.v4
+
 
 
 timedatectl
