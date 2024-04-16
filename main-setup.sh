@@ -24,8 +24,7 @@ echo "Step 1: System Tuning..."
 ./1-system-tuning.sh
 echo "System tuning complete."
 
-echo "Step 4: Starting Solana Validator..."
-./2-validator.sh
-echo "Solana validator startup complete."
+echo "Step 2: Starting Rpc..."
+./2-start-rpc.sh
 
 echo "Setup complete! Solana Validator should be operational."
