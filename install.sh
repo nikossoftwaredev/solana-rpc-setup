@@ -1,7 +1,5 @@
 #!/bin/bash
 
-ulimit -n 65536
-
 # Exit script on any error
 set -e
 set -o errexit
