@@ -24,7 +24,6 @@ exec solana-validator \
     --rpc-bind-address 0.0.0.0 \
     --dynamic-port-range 8000-8014 \
     --no-voting \
-    --no-port-check \
     --no-untrusted-rpc \
     --wal-recovery-mode skip_any_corrupted_record \
     --init-complete-file /var/solana/data/init-completed \
