@@ -13,5 +13,5 @@ sudo systemctl enable solana-validator.service
 echo "Starting Solana Validator service..."
 sudo systemctl start solana-validator.service
 
-sudo journalctl -u solana-validator.service -e
+sudo journalctl -u solana-validator.service -f
 
