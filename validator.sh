@@ -7,7 +7,6 @@ export RUST_BACKTRACE=1
 
 exec solana-validator \
     --identity /root/solana-rpc-setup/solana-keys/validator-keypair.json \
-    --ledger /var/solana/data/ledger \
     --trusted-validator 7Np41oeYqPefeNQEHSv1UDhYrehxin3NStELsSKCT4K2 \
     --trusted-validator GdnSyH3YtwcxFvQrVVJMm1JhTS4QVX7MFsX56uJLUfiZ \
     --trusted-validator DE1bawNcRJB9rVm3buyMVfr8mBEoyyu73NBovf2oXJsJ \
@@ -26,10 +25,11 @@ exec solana-validator \
     --no-voting \
     --no-untrusted-rpc \
     --wal-recovery-mode skip_any_corrupted_record \
-    --init-complete-file /var/solana/data/init-completed \
     --snapshot-archive-format lz4 \
     --require-tower \
     --no-wait-for-vote-to-start-leader \
     --limit-ledger-size 50000000 \
-    --accounts /var/solana/accounts \
+    --init-complete-file /var/root/data/init-completed \
+    --accounts /var/root/accounts \
+    --ledger /var/root/data/ledger \
     --log -
