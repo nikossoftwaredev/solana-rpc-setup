@@ -29,6 +29,9 @@ Description=Solana Validator Service
 After=network.target
 
 [Service]
+Environment="PATH=/root/.local/share/solana/install/releases/stable-d0ed878d573c7f5391cd2cba20465407f63f11a8/solana-release/bin:$PATH"
+Environment="RUST_LOG=info"
+Environment="RUST_BACKTRACE=1"
 ExecStart=/root/solana-rpc-setup/validator.sh
 User=root
 Restart=always
