@@ -5,6 +5,9 @@ sudo journalctl --vacuum-time=1s
 echo "Reloading systemd..."
 sudo systemctl daemon-reload
 
+sudo systemctl disable solana-validator.service
+sudo systemctl stop solana-validator.service
+
 # Enable Solana Validator service to start at boot
 echo "Enabling Solana Validator service..."
 sudo systemctl enable solana-validator.service
