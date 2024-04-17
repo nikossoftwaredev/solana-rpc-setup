@@ -18,13 +18,19 @@ exec solana-validator \
     --expected-genesis-hash 5eykt4UsFv8P8NJdTREpY1vzqKqZKvdpKuc147dw2N9d \
     --entrypoint entrypoint.mainnet-beta.solana.com:8001 \
     --entrypoint entrypoint2.mainnet-beta.solana.com:8001 \
-    --no-voting \
+    --entrypoint entrypoint3.mainnet-beta.solana.com:8001 \
+    --entrypoint entrypoint4.mainnet-beta.solana.com:8001 \
+    --entrypoint entrypoint5.mainnet-beta.solana.com:8001 \
     --snapshot-interval-slots 500 \
     --maximum-local-snapshot-age 500 \
     --rpc-port 8899 \
     --rpc-bind-address 0.0.0.0 \
-    --dynamic-port-range 8000-8020 \
+    --dynamic-port-range 8000-8014 \
+    --no-voting \
     --no-port-check \
+    --no-untrusted-rpc \
+    --no-genesis-fetch \
+    --no-snapshot-fetch \
     --wal-recovery-mode skip_any_corrupted_record \
     --init-complete-file /var/solana/data/init-completed \
     --snapshot-archive-format lz4 \
