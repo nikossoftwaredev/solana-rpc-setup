@@ -34,6 +34,7 @@ After=network.target
 ExecStart=/root/solana-rpc-setup/validator.sh
 User=root
 Restart=always
+LimitNOFILE=1000000
 
 [Install]
 WantedBy=multi-user.target

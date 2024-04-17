@@ -4,7 +4,6 @@ sudo journalctl --vacuum-time=1s
 # Reload systemd to recognize new service
 echo "Reloading systemd..."
 sudo systemctl daemon-reload
-
 sudo systemctl disable solana-validator.service
 sudo systemctl stop solana-validator.service
 
