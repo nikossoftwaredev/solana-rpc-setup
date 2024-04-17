@@ -1,11 +1,8 @@
 #!/bin/bash
 
-#!/bin/bash
 # Set PATH
 export PATH="$PATH:/root/.local/share/solana/install/releases/stable-d0ed878d573c7f5391cd2cba20465407f63f11a8/solana-release/bin"
-
-
-export RUST_LOG=warn
+export RUST_LOG=info
 export RUST_BACKTRACE=1
 
 exec solana-validator \
