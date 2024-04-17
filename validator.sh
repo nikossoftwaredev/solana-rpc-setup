@@ -29,8 +29,6 @@ exec solana-validator \
     --no-voting \
     --no-port-check \
     --no-untrusted-rpc \
-    --no-genesis-fetch \
-    --no-snapshot-fetch \
     --wal-recovery-mode skip_any_corrupted_record \
     --init-complete-file /var/solana/data/init-completed \
     --snapshot-archive-format lz4 \
