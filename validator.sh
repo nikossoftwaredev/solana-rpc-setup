@@ -21,12 +21,11 @@ exec solana-validator \
     --maximum-local-snapshot-age 500 \
     --rpc-port 8899 \
     --rpc-bind-address 0.0.0.0 \
+    --full-rpc-api \
     --dynamic-port-range 8000-8014 \
     --no-voting \
-    --no-untrusted-rpc \
     --wal-recovery-mode skip_any_corrupted_record \
     --snapshot-archive-format lz4 \
-    --require-tower \
     --no-wait-for-vote-to-start-leader \
     --limit-ledger-size 50000000 \
     --init-complete-file /var/root/data/init-completed \

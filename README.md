@@ -35,4 +35,6 @@ sudo systemctl stop solana-validator.service
 
 git fetch && git reset --hard origin/main && find ../solana-rpc-setup -type f -name "\*.sh" -exec chmod +x {} +
 
-sudo journalctl --vacuum-time=1s
+sudo journalctl --vacuum-time=20m
+
+sudo journalctl -u solana-validator.service -f
