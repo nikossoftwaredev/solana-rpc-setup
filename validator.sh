@@ -22,6 +22,7 @@ exec solana-validator \
     --rpc-port 8899 \
     --rpc-bind-address 0.0.0.0 \
     --full-rpc-api \
+    --only-known-rpc \
     --dynamic-port-range 8000-8014 \
     --no-voting \
     --wal-recovery-mode skip_any_corrupted_record \
