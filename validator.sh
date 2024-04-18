@@ -29,6 +29,6 @@ exec solana-validator \
     --no-wait-for-vote-to-start-leader \
     --limit-ledger-size 50000000 \
     --init-complete-file /var/root/data/init-completed \
-    --accounts /var/root/accounts \
-    --ledger /var/root/data/ledger \
+    --accounts /mnt/accounts \
+    --ledger /mnt/ledger \
     --log -

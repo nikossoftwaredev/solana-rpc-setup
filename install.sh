@@ -30,6 +30,7 @@ After=network.target
 
 [Service]
 Environment="PATH=/root/.local/share/solana/install/releases/stable-d0ed878d573c7f5391cd2cba20465407f63f11a8/solana-release/bin:$PATH"
+Environment=SOLANA_METRICS_CONFIG=host=https://metrics.solana.com:8086,db=testnet,u=scratch_writer,p=topsecret 
 StandardOutput=journal
 StandardError=inherit
 ExecStart=/root/solana-rpc-setup/validator.sh
