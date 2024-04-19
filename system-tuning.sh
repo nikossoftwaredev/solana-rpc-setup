@@ -68,7 +68,11 @@ sudo mount /dev/vdb3 /mnt/swap
 sudo blkid /dev/vdb3
 echo 'UUID=f9d4b752-be0c-4266-9e2f-e3d64a4dd088 /mnt/swap ext4 defaults 0 2' | sudo tee -a /etc/fstab
 
-sudo dd if=/dev/vdb3 of=/mnt/swap/swapfile bs=1M count=250K
+sudo fallocate -l 250G /mnt/swap/swapfile
+sudo chmod 600 /mnt/swap/swapfile
+sudo mkswap /mnt/swap/swapfile
+sudo swapon /mnt/swap/swapfile
+echo '/mnt/swap/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
 
 
 

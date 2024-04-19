@@ -44,3 +44,5 @@ git fetch && git reset --hard origin/main && find ../solana-rpc-setup -type f -n
 sudo journalctl --vacuum-time=20m
 
 sudo journalctl -u solana-validator.service -f
+
+solana-validator --ledger /mnt/ledger monitor

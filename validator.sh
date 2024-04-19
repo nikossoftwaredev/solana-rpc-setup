@@ -15,8 +15,6 @@ exec solana-validator \
     --entrypoint entrypoint.mainnet-beta.solana.com:8001 \
     --entrypoint entrypoint2.mainnet-beta.solana.com:8001 \
     --entrypoint entrypoint3.mainnet-beta.solana.com:8001 \
-    --entrypoint entrypoint4.mainnet-beta.solana.com:8001 \
-    --entrypoint entrypoint5.mainnet-beta.solana.com:8001 \
     --snapshot-interval-slots 500 \
     --maximum-local-snapshot-age 500 \
     --rpc-port 8899 \
@@ -32,4 +30,7 @@ exec solana-validator \
     --init-complete-file /var/root/data/init-completed \
     --accounts /mnt/accounts \
     --ledger /mnt/ledger \
-    --log -
+    --log - \
+    --no-poh-speed-test \
+    --skip-poh-verify \
+    --no-port-check
