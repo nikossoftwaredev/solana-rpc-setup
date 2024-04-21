@@ -6,7 +6,7 @@ export RUST_LOG=info
 export RUST_BACKTRACE=1
 
 exec solana-validator \
-    --identity /root/solana-rpc-setup/solana-keys/validator-keypair.json \
+    --identity /root/validator-keypair.json \
     --trusted-validator 7Np41oeYqPefeNQEHSv1UDhYrehxin3NStELsSKCT4K2 \
     --trusted-validator GdnSyH3YtwcxFvQrVVJMm1JhTS4QVX7MFsX56uJLUfiZ \
     --trusted-validator DE1bawNcRJB9rVm3buyMVfr8mBEoyyu73NBovf2oXJsJ \
@@ -31,6 +31,3 @@ exec solana-validator \
     --accounts /mnt/accounts \
     --ledger /mnt/ledger \
     --log - \
-    --no-poh-speed-test \
-    --skip-poh-verify \
-    --no-port-check

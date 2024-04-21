@@ -1,6 +1,17 @@
 #!/bin/bash
 
 # This script configures system parameters for Solana Validator
+vi /etc/security/limits.d/
+
+* soft nofile 100000
+* hard nofile 100000
+
+# making sure that nofile is set to 100000
+echo 'ulimit -Sn 100000' >> ~/.bashrc
+echo 'ulimit -Hn 100000' >> ~/.bashrc
+
+source ~/.bashrc
+
 
 
 # Configuring system parameters
@@ -21,6 +32,7 @@ EOF'
 # Applying the sysctl changes
 sudo sysctl -p /etc/sysctl.d/21-solana-validator.conf
 
+
 # Creating a file to set process file descriptor count limit
 sudo bash -c 'cat >/etc/security/limits.d/90-solana-nofiles.conf <<EOF
 # Increase process file descriptor count limit
@@ -37,17 +49,18 @@ sudo ufw enable \
 sudo ufw status 
 
 
+lsblk
 # Partition for ledger
 sudo parted /dev/vdb mklabel gpt
-sudo parted /dev/vdb mkpart primary ext4 0% 50%
+sudo parted /dev/vdb mkpart primary ext4 0% 40%
 sudo mkfs.ext4 /dev/vdb1
 sudo mkdir /mnt/ledger
 sudo mount /dev/vdb1 /mnt/ledger
 sudo blkid /dev/vdb1
-echo 'UUID=86b51a3c-d1ca-4790-8c77-e21f5b6828b5 /mnt/ledger ext4 defaults 0 2' | sudo tee -a /etc/fstab
+echo 'UUID=<my-uuid> /mnt/ledger ext4 defaults 0 2' | sudo tee -a /etc/fstab
 
 # Partition for accounts
-sudo parted /dev/vdb mkpart primary ext4 50% 85%
+sudo parted /dev/vdb mkpart primary ext4 40% 85%
 sudo mkfs.ext4 /dev/vdb2
 sudo mkdir /mnt/accounts
 sudo mount /dev/vdb2 /mnt/accounts 
@@ -72,7 +85,7 @@ sudo fallocate -l 250G /mnt/swap/swapfile
 sudo chmod 600 /mnt/swap/swapfile
 sudo mkswap /mnt/swap/swapfile
 sudo swapon /mnt/swap/swapfile
-echo '/mnt/swap/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
+echo 'UUID=bb064670-9a56-4b53-a443-f82a2ee7d82b /mnt/swap/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
 
 
 

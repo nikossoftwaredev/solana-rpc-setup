@@ -17,10 +17,6 @@ find ../solana-rpc-setup -type f -name "*.sh" -exec chmod +x {} +
 
 ### System Tuning
 
-```js
-./system-tuning.sh
-```
-
 ### Install solana and tune-system
 
 ```js
