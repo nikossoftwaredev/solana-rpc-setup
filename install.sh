@@ -27,7 +27,6 @@ After=network.target
 
 [Service]
 Environment="PATH=/root/.local/share/solana/install/active_release/bin:$PATH"
-Environment=SOLANA_METRICS_CONFIG=host=https://metrics.solana.com:8086,db=mainet,u=scratch_writer,p=topsecret 
 StandardOutput=journal
 StandardError=inherit
 ExecStart=/root/solana-rpc-setup/validator.sh
@@ -35,6 +34,22 @@ User=root
 Restart=always
 LimitNOFILE=1000000
 
+[Install]
+WantedBy=multi-user.target
+EOF
+
+# validator.service file
+echo "Creating Systuner service file..."
+cat <<EOF | sudo tee /etc/systemd/system/systuner.service > /dev/null
+[Unit]
+Description=Solana System Tuner 
+After=network.target 
+[Service]
+Type=simple 
+Restart=on-failure 
+RestartSec=1 
+LogRateLimitIntervalSec=0 
+ExecStart=/home/root/.local/share/solana/install/active_release/bin/solana-sys-tuner --user root
 [Install]
 WantedBy=multi-user.target
 EOF
