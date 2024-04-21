@@ -89,6 +89,9 @@ echo 'UUID=bb064670-9a56-4b53-a443-f82a2ee7d82b /mnt/swap/swapfile none swap sw 
 
 
 
+solana-keygen new -o authorized-withdrawer-keypair.json
+solana-keygen new -o validator-keypair.json
+
 
 
 
