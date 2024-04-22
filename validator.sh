@@ -16,7 +16,6 @@ exec solana-validator \
     --entrypoint entrypoint3.mainnet-beta.solana.com:8001 \
     --snapshot-interval-slots 500 \
     --maximum-local-snapshot-age 500 \
-    --dynamic-port-range 8000-8020 \
     --rpc-port 8899 \
     --rpc-bind-address 0.0.0.0 \
     --full-rpc-api \
